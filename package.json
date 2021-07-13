@@ -1,0 +1,125 @@
+{
+  "name": "electron-vue3-vite",
+  "version": "0.0.1",
+  "main": "dist/main/index.js",
+  "author": "weekit<121727393@qq.com>",
+  "license": "MIT",
+  "scripts": {
+    "commit": "git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "prettier": "prettier --parser=typescript --write ./src/**/*.ts",
+    "ban": "node warn.js",
+    "dev": "npm run dev:all",
+    "dev:all": "concurrently -n=vue,ele -c=green,blue \"npm run dev:vue\" \"npm run dev:ele\"",
+    "dev:vue": "vite",
+    "dev:ele": "node -r ts-node/register script/build-main --env=development --watch",
+    "build:vue": "vite build",
+    "build:ele": "node -r ts-node/register script/build-main --env=production",
+    "build": "rimraf dist && npm run build:vue && npm run build:ele && electron-builder"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "lib/**/*.ts?(x)": [
+      "yarn prettier",
+      "yarn ban"
+    ]
+  },
+  "build": {
+    "appId": "121727393@qq.com",
+    "asar": false,
+    "directories": {
+      "output": "release/${version}"
+    },
+    "files": [
+      "!node_modules",
+      "dist/**"
+    ],
+    "extraResources": {
+      "from": "src/preload",
+      "to": "app/src/preload"
+    },
+    "mac": {
+      "artifactName": "${productName}_${version}.${ext}",
+      "target": [
+        "dmg"
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}_${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false
+    }
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "naive-ui": "^2.15.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "vue": "^3.1.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-alias": "^3.1.2",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.1",
+    "@rollup/plugin-typescript": "^8.2.1",
+    "@types/minimist": "^1.2.1",
+    "@types/node": "^16.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "@vitejs/plugin-vue": "^1.2.3",
+    "@vue/compiler-sfc": "^3.1.2",
+    "acorn": "^8.2.4",
+    "chalk": "^4.1.0",
+    "commitizen": "^4.2.4",
+    "concurrently": "^6.2.0",
+    "conventional-changelog-cli": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "electron": "13.1.4",
+    "electron-builder": "^22.10.5",
+    "electron-store": "^8.0.0",
+    "eslint": "^7.30.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "4.3.7",
+    "lint-staged": "10.5.2",
+    "minimist": "^1.2.5",
+    "ora": "^5.4.0",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "rollup-plugin-esbuild": "^4.5.0",
+    "sass": "^1.35.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.3.5",
+    "vite": "^2.4.2",
+    "vitejs-plugin-electron": "^0.1.3"
+  },
+  "keywords": [
+    "vite",
+    "electron",
+    "vue3",
+    "rollup"
+  ]
+}
