@@ -7,42 +7,47 @@
     />
     <img alt="Vue logo" src="./assets/logo.png" />
   </div>
-  <HelloWorld msg="Electron@12、Vue@3、Vite@2" />
+  <n-message-provider>
+    <n-dialog-provider>
+      <HelloWorld msg="Electron@12、Vue@3、Vite@2" />
+    </n-dialog-provider>
+  </n-message-provider>
+
   <span>{{ count }}</span>
   <react :component="rComponent" :message="message" :reset="onCallback"></react>
   <div class="sizebox"></div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-import ReactFc from "./components/react/fc.tsx";
-import { ReactWrapper } from "./vendors/index";
+import HelloWorld from "./components/vue/hello-word.vue"
+import ReactFc from "./components/react/sfc.tsx"
+import { ReactWrapper } from "./vendors/mixin-lib/index"
 
 export default {
   name: "App",
   components: {
     HelloWorld,
-    react: ReactWrapper,
+    react: ReactWrapper
   },
   data() {
     return {
       rComponent: ReactFc,
       message: ``,
       baseMessage: `vue component use react`,
-      count: 0,
-    };
+      count: 0
+    }
   },
   created() {
-    this.message = this.baseMessage;
+    this.message = this.baseMessage
   },
   methods: {
     onCallback() {
-      console.log(`click ${this.message}`);
-      this.count++;
-      this.message = this.baseMessage + this.count;
-    },
-  },
-};
+      console.log(`click ${this.message}`)
+      this.count++
+      this.message = this.baseMessage + this.count
+    }
+  }
+}
 </script>
 
 <style>

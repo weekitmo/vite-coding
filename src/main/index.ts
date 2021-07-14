@@ -1,12 +1,13 @@
 /**
  * electron 主文件
  */
-import '@src/common/patch'
-import { join } from 'path'
-import { app, BrowserWindow } from 'electron'
-import dotenv from 'dotenv'
-
-dotenv.config({ path: join(__dirname, '../../.env') })
+import "@src/common/patch"
+import { join } from "path"
+import { app, BrowserWindow } from "electron"
+import dotenv from "dotenv"
+// remove csp warning
+process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true"
+dotenv.config({ path: join(__dirname, "../../.env") })
 
 let win: BrowserWindow
 
@@ -18,15 +19,16 @@ function createWin() {
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
-      preload: join(__dirname, '../../src/preload/index.js'),
-    },
+      preload: join(__dirname, "../../src/preload/index.js")
+    }
   })
 
   const URL = app.isPackaged
-    ? `file://${join(__dirname, '../render/index.html')}` // vite 构建后的静态文件地址
+    ? `file://${join(__dirname, "../render/index.html")}` // vite 构建后的静态文件地址
     : `http://localhost:${process.env.PORT}` // vite 启动的服务器地址
 
   win?.loadURL(URL)
+
   win.webContents.openDevTools()
 }
 

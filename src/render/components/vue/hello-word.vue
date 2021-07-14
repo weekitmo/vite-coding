@@ -6,12 +6,33 @@
     Use
     <code>&lt;script setup&gt;</code>
   </label>
-  <label>
-    <input type="checkbox" v-model="useTsPlugin" />
-    Provide types for
-    <code>*.vue</code>
-    imports
-  </label>
+  <n-space>
+    <n-button @click="handleConfirm">警告</n-button>
+    <n-button @click="handleSuccess">成功</n-button>
+    <n-button @click="handleError">错误</n-button>
+  </n-space>
+  <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
+    <img
+      class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
+      src="@render/assets/electron.png"
+      alt=""
+      width="384"
+      height="512"
+    />
+    <div class="pt-6 md:p-8 text-center md:text-left space-y-4">
+      <blockquote>
+        <p class="text-lg font-semibold">
+          “Tailwind CSS is the only framework that I've seen scale on large
+          teams. It’s easy to customize, adapts to any design, and the build
+          size is tiny.”
+        </p>
+      </blockquote>
+      <figcaption class="font-medium">
+        <div class="text-cyan-600">Sarah Dayan</div>
+        <div class="text-gray-500">Staff Engineer, Algolia</div>
+      </figcaption>
+    </div>
+  </figure>
 
   <button @click="count++">count is: {{ count }}</button>
   <p>
@@ -52,6 +73,7 @@
 <script lang="ts">
 import { ref, defineComponent, onMounted, Ref } from "vue"
 import { ColorPickerTool } from "@render/vendors/image-color-picker/index"
+import { useMessage, useDialog } from "naive-ui"
 
 export default defineComponent({
   name: "HelloWorld",
@@ -79,10 +101,52 @@ export default defineComponent({
         canvasWidth: 500,
         canvasHeight: 500,
         imageURL:
-          "https://and-static.ghzs.com/image/game/gallery/2021/06/23/60d2f7cd2fbaa5687f33fa51.png"
+          "https://i0.hdslb.com/bfs/sycp/creative_img/202107/3497baf2c79cd6f0529d5c99acdf3eda.jpg@880w_388h_1c_95q"
       })
     })
-    return { count, useScriptSetup, useTsPlugin, currentHex, timestamp }
+    const message = useMessage()
+    const dialog = useDialog()
+    return {
+      handleConfirm() {
+        dialog.warning({
+          title: "警告",
+          content: "你确定？",
+          positiveText: "确定",
+          negativeText: "不确定",
+          onPositiveClick: () => {
+            message.success("确定")
+          },
+          onNegativeClick: () => {
+            message.error("不确定")
+          }
+        })
+      },
+      handleSuccess() {
+        dialog.success({
+          title: "成功",
+          content: "厉害",
+          positiveText: "哇",
+          onPositiveClick: () => {
+            message.success("耶！")
+          }
+        })
+      },
+      handleError() {
+        dialog.error({
+          title: "错误",
+          content: "拿来吧你~",
+          positiveText: "知道了",
+          onPositiveClick: () => {
+            message.success("我就知道")
+          }
+        })
+      },
+      count,
+      useScriptSetup,
+      useTsPlugin,
+      currentHex,
+      timestamp
+    }
   }
 })
 </script>

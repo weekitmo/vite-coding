@@ -1,3 +1,4 @@
+// https://tailwindcss.com/docs
 import "@src/common/patch"
 import { createApp } from "vue"
 import App from "./App.vue"
@@ -5,6 +6,7 @@ import fs = require("fs")
 import { ipcRenderer } from "electron"
 import Store from "electron-store"
 import "./index.css"
+import "./output.css"
 
 import {
   // create naive ui
@@ -12,11 +14,13 @@ import {
   // component
   NButton,
   NDatePicker,
+  NDialogProvider,
+  NMessageProvider,
   NSpace
 } from "naive-ui"
 
 const naive = create({
-  components: [NButton, NDatePicker, NSpace]
+  components: [NButton, NDatePicker, NSpace, NDialogProvider, NMessageProvider]
 })
 
 setTimeout(() => {
