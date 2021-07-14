@@ -2,7 +2,7 @@
 module.exports = {
   types: [
     {
-      value: ":sparkles: feat",
+      value: "feat: :sparkles:",
       name: "✨ feat: 一个新功能"
     },
     {
