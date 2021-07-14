@@ -2590,6 +2590,11 @@ get-stream@^5.0.0, get-stream@^5.1.0:
   dependencies:
     pump "^3.0.0"
 
+git-cz@^4.7.6:
+  version "4.7.6"
+  resolved "https://registry.npm.taobao.org/git-cz/download/git-cz-4.7.6.tgz#1250c486f01724e801a630b848fd8786f7e67e90"
+  integrity sha1-ElDEhvAXJOgBpjC4SP2HhvfmfpA=
+
 git-raw-commits@^2.0.8:
   version "2.0.10"
   resolved "https://registry.npm.taobao.org/git-raw-commits/download/git-raw-commits-2.0.10.tgz?cache=0&sync_timestamp=1611765513212&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fgit-raw-commits%2Fdownload%2Fgit-raw-commits-2.0.10.tgz#e2255ed9563b1c9c3ea6bd05806410290297bbc1"
