@@ -1,13 +1,13 @@
 {
   "name": "electron-vue3-vite",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "dist/main/index.js",
   "author": "weekit<121727393@qq.com>",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "release": "standard-version",
+    "release": "standard-version --preset gitmoji-config",
     "prettier": "prettier --parser=typescript --write ./src/**/*.ts",
     "ban": "node warn.js",
     "dev": "npm run dev:all",
@@ -99,6 +99,7 @@
     "commitizen": "^4.2.4",
     "concurrently": "^6.2.0",
     "conventional-changelog-cli": "^2.1.1",
+    "conventional-changelog-gitmoji-config": "^1.4.3",
     "cross-env": "^7.0.3",
     "cz-conventional-changelog": "^3.3.0",
     "electron": "13.1.4",
