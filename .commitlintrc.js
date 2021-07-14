@@ -1,3 +1,4 @@
+// 0 Disabled 1 warning 2 Error
 module.exports = {
   // extends: ["gitmoji", "cz"],
   extends: ["gitmoji"],
@@ -81,6 +82,9 @@ module.exports = {
         ":label:"
       ]
     ],
-    "subject-empty": [2, "never"]
+    "subject-empty": [2, "never"],
+    // like Fix
+    "type-case": [2, "always", "pascal-case"],
+    "type-enum": [0]
   }
 }

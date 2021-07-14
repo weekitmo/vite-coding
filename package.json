@@ -101,7 +101,6 @@
     "acorn": "^8.2.4",
     "chalk": "^4.1.0",
     "commitizen": "^4.2.4",
-    "commitlint-config-cz": "^0.13.2",
     "commitlint-config-gitmoji": "^2.2.5",
     "concurrently": "^6.2.0",
     "conventional-changelog-cli": "^2.1.1",

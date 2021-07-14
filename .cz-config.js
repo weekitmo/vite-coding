@@ -2,69 +2,69 @@
 module.exports = {
   types: [
     {
-      value: ":construction: WIP",
-      name: "💪 WIP: Work in progress"
+      value: ":sparkles: Feat",
+      name: "✨ Feat: 一个新功能"
     },
     {
-      value: ":sparkles: feat",
-      name: "✨ Feat: A new feature"
+      value: ":bug: Fix",
+      name: "🐛 Fix: 修复一个bug"
     },
     {
-      value: ":bug: fix",
-      name: "🐛 Fix: A bug fix"
+      value: ":pencil: Docs",
+      name: "📝 Docs: 更新文档"
     },
     {
-      value: ":hammer: refactor",
-      name: "🔨 Refactor: A code change that neither fixes a bug nor adds a feature"
+      value: ":white_check_mark: Test",
+      name: "✅ Test: 添加一些测试demo"
     },
     {
-      value: ":pencil: docs",
-      name: "📝 Docs: Documentation only changes"
+      value: ":art: Improve",
+      name: "🎨 Improve: 改善一些特性"
     },
     {
-      value: ":white_check_mark: test",
-      name: "✅ Test: Add missing tests or correcting existing tests"
+      value: ":construction: Wip",
+      name: "💪 Wip: 正在进行的工作"
     },
     {
-      value: ":thought_balloon: chore",
-      name: "🗯 Chore: Change that don't modify src or test files. Such as updating build tasks, package manager"
+      value: ":hammer: Refactor",
+      name: "🔨 Refactor: 重构代码"
     },
     {
-      value: ":lipstick: ui",
-      name: "💄 Update: Update the UI and style files."
+      value: ":thought_balloon: Chore",
+      name: "🗯 Chore: 一些不太重要的更改"
     },
     {
-      value: ":art: style",
-      name: "🎨 Change: Change that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)"
+      value: ":lipstick: Update",
+      name: "💄 Update: 更新样式或者UI"
     },
     {
-      value: ":package: update(dependencies)",
-      name: "📦 Update: Update compiled files or packages."
+      value: ":package: Migrate",
+      name: "📦 Migrate: 更新一些包的版本"
     },
     {
-      value: ":green_heart: fix(ci)",
-      name: "💚 Fix: Fix(CI) Build."
+      value: ":green_heart: CI",
+      name: "💚 Fix: 修复持续构建"
     },
     {
-      value: ":truck: move",
-      name: "🚚 Mv: Moving or renaming files."
+      value: ":truck: Move",
+      name: "🚚 Move: 调整文件或者目录"
     },
     {
-      value: ":fire: prune",
-      name: "🔥 Remove: Removing code or files."
+      value: ":fire: Prune",
+      name: "🔥 Remove: 删除一些屎一样的代码"
     },
     {
-      value: ":bookmark: release",
-      name: "🔖 Release: Release Version tags."
+      value: ":bookmark: Release",
+      name: "🔖 Release: 发布一个里程碑"
     },
     {
-      value: ":rocket: build(stable)",
-      name: "🚀 Build: stable!"
+      value: ":rocket: Build",
+      name: "🚀 Build: 稳定版"
     }
   ],
 
   scopes: [],
 
   allowCustomScopes: true,
-  allowBreakingChanges: ["feat", "fix"]
+  allowBreakingChanges: ["Feat", "Fix"]
 }
