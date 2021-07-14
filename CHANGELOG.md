@@ -1,3 +1,14 @@
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.0.8](https://github.com/weekitmo/vite-vue3/compare/v0.0.7...v0.0.8) (2021-07-14)
+
+
+### 🐛 Bug Fixes | Bug 修复
+
+* some test ([e97f538](https://github.com/weekitmo/vite-vue3/commit/e97f5385ec0711c95bf902f04202fe4613c81553))
+
 ## [0.0.7](https://github.com/weekitmo/vite-vue3/compare/v0.0.6...v0.0.7) (2021-07-14)
 
 
@@ -24,6 +35,3 @@
 ### Features
 
 * :tada: create ([327c360](https://github.com/weekitmo/vite-vue3/commit/327c360bc556220ebec9c5fbb001ac3bf0d6d5ee))
-
-
-

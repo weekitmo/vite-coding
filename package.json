@@ -1,12 +1,12 @@
 {
   "name": "electron-vue3-vite",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "dist/main/index.js",
   "author": "weekit<121727393@qq.com>",
   "license": "MIT",
   "scripts": {
     "commit": "git-cz",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r",
     "release": "standard-version",
     "emoji-cp": "cp ./gitmojis.json ./node_modules/commitlint-plugin-gitmoji/lib/gitmojis.json",
     "prettier": "prettier --parser=typescript --write ./src/**/*.ts",
