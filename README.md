@@ -18,7 +18,7 @@
 - [tailwind](https://tailwindcss.com/docs)
 - [vue3](https://vue3js.cn/docs/zh/guide/introduction.html)
 - [electron](https://www.electronjs.org/docs)
-- [gitmoji-cli](https://github.com/carloscuesta/gitmoji-cli)
+- [auto-changelog](https://github.com/cookpete/auto-changelog)
 
 ## Help
 
