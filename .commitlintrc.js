@@ -83,8 +83,8 @@ module.exports = {
       ]
     ],
     "subject-empty": [2, "never"],
-    // like Fix
-    "type-case": [2, "always", "pascal-case"],
+    // like fix
+    "type-case": [2, "always", "lower-case"],
     "type-enum": [0]
   }
 }
