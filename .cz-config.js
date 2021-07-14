@@ -14,7 +14,7 @@ module.exports = {
       name: "📝 docs: 更新文档"
     },
     {
-      value: ":white_check_mark: test",
+      value: "test",
       name: "✅ test: 添加一些测试demo"
     },
     {
