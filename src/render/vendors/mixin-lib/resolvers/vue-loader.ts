@@ -1,23 +1,23 @@
-import { ReactWrapper } from '../index'
+import { ReactWrapper } from "../index"
 
-export default function VueResolver (component) {
+export default function VueResolver(component) {
   return {
     components: { ReactWrapper },
-    props: ['passedProps'],
+    props: ["passedProps"],
     inheritAttrs: false,
-    render (createElement) {
+    render(createElement) {
       return createElement(
-        'react-wrapper',
+        "react-wrapper",
         {
           props: {
             component,
-            passedProps: this.$props.passedProps,
+            passedProps: this.$props.passedProps
           },
           attrs: this.$attrs,
-          on: this.$listeners,
+          on: this.$listeners
         },
         this.$slots.default
       )
-    },
+    }
   }
 }

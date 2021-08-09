@@ -6,7 +6,8 @@ import fs = require("fs")
 import { ipcRenderer } from "electron"
 import Store from "electron-store"
 import "./index.css"
-import "./output.css"
+// tailwind prebuild by postcss
+import "./tailwind.entry.css"
 
 import {
   // create naive ui

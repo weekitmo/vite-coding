@@ -1,13 +1,14 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
 /** docoment 加载完成 */
 function domReady(...args) {
-  const condition = args.length ? [...args] : ['complete', 'interactive']
+  const condition = args.length ? [...args] : ["complete", "interactive"]
   return new Promise(resolve => {
     if (condition.includes(document.readyState)) {
       resolve(true)
     } else {
-      document.addEventListener('readystatechange', () => {
+      document.addEventListener("readystatechange", () => {
         if (condition.includes(document.readyState)) {
           resolve(true)
         }
@@ -18,8 +19,8 @@ function domReady(...args) {
 
 /** 插入 loading */
 function loadingBootstrap() {
-  const loadingStyle = document.createElement('style');
-  const loadingBox = document.createElement('div');
+  const loadingStyle = document.createElement("style")
+  const loadingBox = document.createElement("div")
 
   loadingStyle.textContent += `
   /* https://projects.lukehaas.me/css-loaders/ */
@@ -93,37 +94,38 @@ function loadingBootstrap() {
       box-shadow: 0 -2em;
       height: 5em;
     }
-  }`;
+  }`
 
-  loadingBox.classList.add('loading-box', 'load1');
-  loadingBox.innerHTML += '<div class="loader"></div>';
+  loadingBox.classList.add("loading-box", "load1")
+  loadingBox.innerHTML += '<div class="loader"></div>'
 
   const appendLoading = () => {
-    document.head.appendChild(loadingStyle);
-    document.body.appendChild(loadingBox);
-  };
+    document.head.appendChild(loadingStyle)
+    document.body.appendChild(loadingBox)
+  }
 
   const removeLoading = () => {
-    document.head.removeChild(loadingStyle);
-    document.body.removeChild(loadingBox);
-  };
+    document.head.removeChild(loadingStyle)
+    document.body.removeChild(loadingBox)
+  }
 
   return { loadingStyle, loadingBox, removeLoading, appendLoading }
 }
 
-; (async function () {
-  await domReady();
+// eslint-disable-next-line @typescript-eslint/no-extra-semi
+;(async function () {
+  await domReady()
 
-  let _isCallRemoveLoading = false;
-  const { removeLoading, appendLoading } = loadingBootstrap();
+  let _isCallRemoveLoading = false
+  const { removeLoading, appendLoading } = loadingBootstrap()
 
   window.removeLoading = () => {
-    _isCallRemoveLoading = true;
-    removeLoading();
-  };
+    _isCallRemoveLoading = true
+    removeLoading()
+  }
 
   // 5 秒超时自动关闭
-  setTimeout(() => !_isCallRemoveLoading && removeLoading(), 4999);
+  setTimeout(() => !_isCallRemoveLoading && removeLoading(), 4999)
 
-  appendLoading();
-})();
+  appendLoading()
+})()

@@ -41,7 +41,9 @@ export class ColorPickerTool {
 
   _internalDealCors = (url: string) => {
     // https://cn.webmasterapi.com/free-image-proxy
-    return `https://ip.webmasterapi.com/api/imageproxy/${encodeURIComponent(url)}`
+    return `https://ip.webmasterapi.com/api/imageproxy/${encodeURIComponent(
+      url
+    )}`
   }
 
   // save imageData, could be used to recover

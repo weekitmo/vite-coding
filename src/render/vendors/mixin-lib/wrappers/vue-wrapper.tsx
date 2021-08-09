@@ -32,6 +32,7 @@ export default class VueContainer extends React.Component {
      * constructor to avoid instantiating functions in render.
      */
     const createVueInstance = this.createVueInstance
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
     const self = this
     this.createVueInstance = function (element, component, prevComponent) {
       createVueInstance(element, self, component, prevComponent)

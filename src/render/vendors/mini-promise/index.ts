@@ -52,6 +52,7 @@ class MiniPromise {
 }
 
 /*** use test */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const promise = new MiniPromise((resolve, reject) => {
   setTimeout(() => {
     resolve("成功")

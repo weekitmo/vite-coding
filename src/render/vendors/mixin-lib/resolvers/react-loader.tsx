@@ -1,4 +1,3 @@
-/* eslint-disable prefer-object-spread/prefer-object-spread */
 import React from "react"
 import { VueWrapper } from "../index"
 import isReactComponent from "../utils/is-react"

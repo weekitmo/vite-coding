@@ -34,6 +34,7 @@ const makeReactContainer = Component => {
         // Vue attaches an event handler, but it is missing an event name, so
         // it ends up using an empty string. Prevent passing an empty string
         // named prop to React.
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         "": _invoker,
         ...rest
       } = this.state

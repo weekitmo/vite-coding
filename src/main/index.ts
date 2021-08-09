@@ -3,13 +3,24 @@
  */
 import "@src/common/patch"
 import { join } from "path"
-import { app, BrowserWindow } from "electron"
+import { app, BrowserWindow, ipcMain } from "electron"
+import { EVENT_MAIN_MAP, EVENT_REPLY_MAP } from "../render/utils/ipc"
 import dotenv from "dotenv"
 // remove csp warning
 process.env["ELECTRON_DISABLE_SECURITY_WARNINGS"] = "true"
 dotenv.config({ path: join(__dirname, "../../.env") })
 
 let win: BrowserWindow
+
+ipcMain.on(EVENT_MAIN_MAP.asynchronousMessage, (event, arg) => {
+  console.log(`[MAIN-IPC]`, arg) // prints "ping"
+  event.sender.send(EVENT_REPLY_MAP.asynchronousReply, "pong")
+})
+
+ipcMain.on(EVENT_MAIN_MAP.synchronousMessage, (event, arg) => {
+  console.log(`[MAIN-IPC]`, arg) // prints "ping"
+  event.returnValue = "synchronous-pong"
+})
 
 function createWin() {
   // 创建浏览器窗口

@@ -6,11 +6,15 @@
     Use
     <code>&lt;script setup&gt;</code>
   </label>
-  <n-space>
-    <n-button @click="handleConfirm">警告</n-button>
-    <n-button @click="handleSuccess">成功</n-button>
-    <n-button @click="handleError">错误</n-button>
-  </n-space>
+  <div class="mx-1 md:rounded-none my-1">
+    <n-space>
+      <n-button @click="handleConfirm">警告</n-button>
+      <n-button @click="handleSuccess">成功</n-button>
+      <n-button @click="handleError">错误</n-button>
+      <n-button @click="ipcSync">ipc同步通信</n-button>
+      <n-button @click="ipcAsync">ipc异步通信</n-button>
+    </n-space>
+  </div>
   <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
     <img
       class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
@@ -74,6 +78,12 @@
 import { ref, defineComponent, onMounted, Ref } from "vue"
 import { ColorPickerTool } from "@render/vendors/image-color-picker/index"
 import { useMessage, useDialog } from "naive-ui"
+import {
+  EVENT_MAIN_MAP,
+  EVENT_REPLY_MAP,
+  useSyncIpcRenderer,
+  useAsyncIpcRenderer
+} from "@render/utils/ipc"
 
 export default defineComponent({
   name: "HelloWorld",
@@ -93,6 +103,24 @@ export default defineComponent({
     const onPickerCallback = hex => {
       console.log(hex)
       currentHex.value = hex
+    }
+    const channelCallback = (event: Electron.IpcRendererEvent, arg) => {
+      console.log(arg)
+    }
+    const { send } = useAsyncIpcRenderer(
+      EVENT_REPLY_MAP.asynchronousReply,
+      channelCallback
+    )
+
+    const ipcSync = () => {
+      const v = useSyncIpcRenderer(
+        EVENT_MAIN_MAP.synchronousMessage,
+        currentHex.value
+      )
+      console.log(`[RENDER]: `, v)
+    }
+    const ipcAsync = () => {
+      send(EVENT_MAIN_MAP.asynchronousMessage, currentHex.value)
     }
     onMounted(() => {
       colorpicker.value = new ColorPickerTool({
@@ -145,7 +173,9 @@ export default defineComponent({
       useScriptSetup,
       useTsPlugin,
       currentHex,
-      timestamp
+      timestamp,
+      ipcSync,
+      ipcAsync
     }
   }
 })
