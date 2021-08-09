@@ -13,7 +13,7 @@ export function restoreIpAddresses(s: string): string[] {
     temp: string[] = []
   //start表示从s的哪一位开始，这里从s的第0位开始
   let start = 0
-  if (s.length < 3 || s.length > 12) return res
+  if (s.length < 4 || s.length > 12) return res
   //递归函数
   restoreIp(s, start, temp, res)
   return res
@@ -43,3 +43,5 @@ function restoreIp(s: string, start: number, temp: string[], res: string[]) {
     temp.pop()
   }
 }
+
+console.log(restoreIpAddresses("101023"))
