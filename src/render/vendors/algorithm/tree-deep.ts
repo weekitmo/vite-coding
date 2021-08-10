@@ -18,3 +18,15 @@ export const minDepth = root => {
   }
   return depth // 返回整棵树的计算结果
 }
+
+export const maxDepth = root => {
+  if (!root) return root
+  let ret = 1
+  function dfs(root, depth) {
+    if (!root.left && !root.right) ret = Math.max(ret, depth)
+    if (root.left) dfs(root.left, depth + 1)
+    if (root.right) dfs(root.right, depth + 1)
+  }
+  dfs(root, ret)
+  return ret
+}

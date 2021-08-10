@@ -9,12 +9,7 @@
   <div class="shadow-md rounded-xl bg-gray-300 py-4 w-60 m-auto mt-2">
     This is Vue count: {{ count }}
   </div>
-  <react
-    class="m-auto"
-    :component="rComponent"
-    :message="message"
-    :reset="onCallback"
-  ></react>
+  <react :component="rComponent" :message="message" :reset="onCallback"></react>
   <div class="sizebox"></div>
 </template>
 
