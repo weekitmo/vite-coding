@@ -1,20 +1,20 @@
 <template>
-  <div class="logo-box">
-    <img
-      style="height: 200px"
-      src="./assets/electron.png"
-      alt="Electron logo"
-    />
-    <img alt="Vue logo" src="./assets/logo.png" />
-  </div>
+  <Preview />
   <n-message-provider>
     <n-dialog-provider>
-      <HelloWorld msg="Electron@12、Vue@3、Vite@2" />
+      <HelloWorld />
     </n-dialog-provider>
   </n-message-provider>
 
-  <span>{{ count }}</span>
-  <react :component="rComponent" :message="message" :reset="onCallback"></react>
+  <div class="shadow-md rounded-xl bg-gray-300 py-4 w-60 m-auto mt-2">
+    This is Vue count: {{ count }}
+  </div>
+  <react
+    class="m-auto"
+    :component="rComponent"
+    :message="message"
+    :reset="onCallback"
+  ></react>
   <div class="sizebox"></div>
 </template>
 
@@ -22,12 +22,17 @@
 import HelloWorld from "./components/vue/hello-word.vue"
 import ReactFc from "./components/react/sfc.tsx"
 import { ReactWrapper } from "./vendors/mixin-lib/index"
-
+// import { defineAsyncComponent } from "vue"
+// const Preview = defineAsyncComponent(() =>
+//   import("@render/components/3d-preview.vue")
+// )
+import Preview from "@render/components/3d-preview.vue"
 export default {
   name: "App",
   components: {
     HelloWorld,
-    react: ReactWrapper
+    react: ReactWrapper,
+    Preview
   },
   data() {
     return {

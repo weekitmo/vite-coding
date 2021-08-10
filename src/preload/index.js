@@ -20,6 +20,7 @@ function domReady(...args) {
 /** 插入 loading */
 function loadingBootstrap() {
   const loadingStyle = document.createElement("style")
+  loadingStyle.id = "loading-id"
   const loadingBox = document.createElement("div")
 
   loadingStyle.textContent += `
@@ -105,7 +106,6 @@ function loadingBootstrap() {
   }
 
   const removeLoading = () => {
-    document.head.removeChild(loadingStyle)
     document.body.removeChild(loadingBox)
   }
 
@@ -125,7 +125,7 @@ function loadingBootstrap() {
   }
 
   // 5 秒超时自动关闭
-  setTimeout(() => !_isCallRemoveLoading && removeLoading(), 4999)
+  setTimeout(() => !_isCallRemoveLoading && removeLoading(), 5000)
 
   appendLoading()
 })()

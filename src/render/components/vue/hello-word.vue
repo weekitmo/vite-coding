@@ -1,11 +1,4 @@
 <template>
-  <h1>{{ msg }}</h1>
-
-  <label>
-    <input type="checkbox" v-model="useScriptSetup" />
-    Use
-    <code>&lt;script setup&gt;</code>
-  </label>
   <div class="mx-1 md:rounded-none my-1">
     <n-space>
       <n-button @click="handleConfirm">警告</n-button>
@@ -15,7 +8,7 @@
       <n-button @click="ipcAsync">ipc异步通信</n-button>
     </n-space>
   </div>
-  <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0">
+  <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0 mb-2">
     <img
       class="w-32 h-32 md:w-48 md:h-auto md:rounded-none rounded-full mx-auto"
       src="@render/assets/electron.png"
@@ -38,20 +31,7 @@
     </div>
   </figure>
 
-  <button @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code>
-    to test hot module replacement.
-  </p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-  </p>
-
-  <n-space>
+  <n-space class="my-2 mx-2">
     <n-button>Default</n-button>
     <n-button type="primary">Primary</n-button>
     <n-button type="info">Info</n-button>
@@ -60,9 +40,9 @@
     <n-button type="error">Error</n-button>
   </n-space>
 
-  <div class="show-date-picker">
-    <n-date-picker v-model:value="timestamp" type="date" clearable />
-    <pre>{{ JSON.stringify(timestamp) }}</pre>
+  <div class="show-date-picker w-40 my-2 mx-2">
+    <n-date-picker v-model:value="timestamp" type="datetime" clearable />
+    <pre>{{ timestamp && JSON.stringify(timestamp) }}</pre>
   </div>
 
   <div class="wrapper">
@@ -87,12 +67,7 @@ import {
 
 export default defineComponent({
   name: "HelloWorld",
-  props: {
-    msg: {
-      type: String,
-      required: true
-    }
-  },
+
   setup: () => {
     const count = ref(0)
     const useScriptSetup = ref(false)
@@ -129,7 +104,7 @@ export default defineComponent({
         canvasWidth: 500,
         canvasHeight: 500,
         imageURL:
-          "https://i0.hdslb.com/bfs/sycp/creative_img/202107/3497baf2c79cd6f0529d5c99acdf3eda.jpg@880w_388h_1c_95q"
+          "https://i0.hdslb.com/bfs/feed-admin/0baa8ed60a2b0d1726a1b8d5f0af32130eae30e3.jpg@880w_388h_1c_95q"
       })
     })
     const message = useMessage()
@@ -137,35 +112,36 @@ export default defineComponent({
     return {
       handleConfirm() {
         dialog.warning({
-          title: "警告",
-          content: "你确定？",
+          title: "提示",
+          content: "此操作将永久删除该文件, 是否继续?",
           positiveText: "确定",
-          negativeText: "不确定",
+          negativeText: "取消",
           onPositiveClick: () => {
             message.success("确定")
           },
           onNegativeClick: () => {
-            message.error("不确定")
+            message.info("取消")
           }
         })
       },
       handleSuccess() {
         dialog.success({
-          title: "成功",
-          content: "厉害",
-          positiveText: "哇",
+          title: "恭喜",
+          content: "恭喜你，这是一条成功消息",
+          positiveText: "谢谢",
           onPositiveClick: () => {
-            message.success("耶！")
+            message.success("确定")
           }
         })
       },
       handleError() {
         dialog.error({
-          title: "错误",
-          content: "拿来吧你~",
+          title: "提示",
+          content: "错了哦，这是一条错误消息",
           positiveText: "知道了",
+          showIcon: false,
           onPositiveClick: () => {
-            message.success("我就知道")
+            message.success("知道了")
           }
         })
       },
