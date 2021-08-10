@@ -2,6 +2,8 @@
 import "@src/common/patch"
 import { createApp } from "vue"
 import App from "./App.vue"
+import router from "./router"
+import store from "./store/vuex"
 // import fs = require("fs")
 // import { ipcRenderer } from "electron"
 // import Store from "electron-store"
@@ -35,5 +37,7 @@ const naive = create({
 // }, 2999)
 
 const app = createApp(App)
+app.use(router)
+app.use(store)
 app.use(naive)
 app.mount("#app").$nextTick(window.removeLoading)

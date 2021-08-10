@@ -1,62 +1,86 @@
 <template>
-  <Preview />
-  <n-message-provider>
-    <n-dialog-provider>
-      <HelloWorld />
-    </n-dialog-provider>
-  </n-message-provider>
-
-  <div class="shadow-md rounded-xl bg-gray-300 py-4 w-60 m-auto mt-2">
-    This is Vue count: {{ count }}
-  </div>
-  <react :component="rComponent" :message="message" :reset="onCallback"></react>
-  <div class="sizebox"></div>
+  <router-view class="router-view" v-slot="{ Component }">
+    <transition :name="transitionName">
+      <component :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
-<script>
-import HelloWorld from "./components/vue/hello-word.vue"
-import ReactFc from "./components/react/sfc.tsx"
-import { ReactWrapper } from "./vendors/mixin-lib/index"
-// import { defineAsyncComponent } from "vue"
-// const Preview = defineAsyncComponent(() =>
-//   import("@render/components/3d-preview.vue")
-// )
-import Preview from "@render/components/3d-preview.vue"
+<script lang="ts">
+import { reactive, toRefs } from "vue"
+import { useRouter } from "vue-router"
 export default {
   name: "App",
-  components: {
-    HelloWorld,
-    react: ReactWrapper,
-    Preview
-  },
-  data() {
+
+  setup() {
+    const router = useRouter()
+    const state = reactive({
+      transitionName: "slide-left"
+    })
+    router.beforeEach((to, from) => {
+      if (to.meta.index > from.meta.index) {
+        state.transitionName = "slide-left" // 向左滑动
+      } else if (to.meta.index < from.meta.index) {
+        // 由次级到主级
+        state.transitionName = "slide-right"
+      } else {
+        state.transitionName = "" // 同级无过渡效果
+      }
+    })
     return {
-      rComponent: ReactFc,
-      message: ``,
-      baseMessage: `vue component use react`,
-      count: 0
-    }
-  },
-  created() {
-    this.message = this.baseMessage
-  },
-  methods: {
-    onCallback() {
-      console.log(`click ${this.message}`)
-      this.count++
-      this.message = this.baseMessage + this.count
+      ...toRefs(state)
     }
   }
 }
 </script>
 
-<style>
-.logo-box {
-  display: flex;
-  width: 100%;
-  justify-content: center;
+<style lang="scss">
+html,
+body {
+  padding: 0;
+  margin: 0;
 }
-.sizebox {
-  padding: 10px;
+#app {
+  height: 100%;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // text-align: center;
+  color: #2c3e50;
+}
+.router-view {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: 0 auto;
+  -webkit-overflow-scrolling: touch;
+}
+.slide-right-enter-active,
+.slide-right-leave-active,
+.slide-left-enter-active,
+.slide-left-leave-active {
+  height: 100%;
+  will-change: transform;
+  transition: all 500ms;
+  position: absolute;
+  backface-visibility: hidden;
+}
+.slide-right-enter {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
+}
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-enter {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.slide-left-leave-active {
+  opacity: 0;
+  transform: translate3d(-100%, 0, 0);
 }
 </style>

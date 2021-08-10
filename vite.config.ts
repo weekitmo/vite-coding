@@ -33,6 +33,9 @@ export default defineConfig(env => {
       commonjsOptions: {},
       assetsDir: "", // 相对路径 加载问题
       sourcemap: true
+    },
+    optimizeDeps: {
+      exclude: ["electron-is-dev", "electron-store"]
     }
   }
 })

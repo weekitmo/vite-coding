@@ -16,6 +16,7 @@
     "dev:ele": "node -r ts-node/register script/build-main --env=development --watch",
     "build:vue": "vite build",
     "build:ele": "node -r ts-node/register script/build-main --env=production",
+    "just:build": "npm run build:ele && electron-builder",
     "build": "rimraf dist && npm run build:vue && npm run build:ele && electron-builder"
   },
   "config": {
@@ -36,7 +37,7 @@
     ]
   },
   "build": {
-    "appId": "121727393@qq.com",
+    "appId": "com.weekit.daily-coding",
     "asar": false,
     "directories": {
       "output": "release/${version}"
@@ -50,6 +51,7 @@
       "to": "app/src/preload"
     },
     "mac": {
+      "icon": "buildResources/icon.icns",
       "artifactName": "${productName}_${version}.${ext}",
       "target": [
         "dmg"

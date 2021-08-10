@@ -6,6 +6,7 @@
       <n-button @click="handleError">错误</n-button>
       <n-button @click="ipcSync">ipc同步通信</n-button>
       <n-button @click="ipcAsync">ipc异步通信</n-button>
+      <n-button @click="toAbout">关于页面</n-button>
     </n-space>
   </div>
   <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0 mb-2">
@@ -64,6 +65,7 @@ import {
   useSyncIpcRenderer,
   useAsyncIpcRenderer
 } from "@render/utils/ipc"
+import { useRouter } from "vue-router"
 
 export default defineComponent({
   name: "HelloWorld",
@@ -109,7 +111,11 @@ export default defineComponent({
     })
     const message = useMessage()
     const dialog = useDialog()
+    const router = useRouter()
     return {
+      toAbout() {
+        router.push({ name: "About" })
+      },
       handleConfirm() {
         dialog.warning({
           title: "提示",
