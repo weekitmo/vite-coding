@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "importHelpers": true,
     "jsx": "preserve",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "sourceMap": true,
     "baseUrl": "./",
+    "noEmit": true,
     "strict": false,
     "paths": {
       "@render/*": ["src/render/*"],
@@ -16,6 +17,13 @@
       "@src/*": ["src/*"],
       "@root/*": ["./*"]
     },
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client"]
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }

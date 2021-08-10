@@ -1,7 +1,7 @@
 /**
  * electron 打包
  */
-import { join } from "path"
+import * as path from "path"
 import { spawn, ChildProcess } from "child_process"
 import { watch, rollup, OutputOptions } from "rollup"
 import minimist from "minimist"
@@ -12,6 +12,7 @@ import dotenv from "dotenv"
 import { waitOn } from "./utils"
 import options from "./rollup.config"
 import { main } from "../package.json"
+const { join } = path
 
 dotenv.config({ path: join(__dirname, "../.env") })
 

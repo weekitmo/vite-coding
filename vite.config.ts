@@ -5,13 +5,14 @@ import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import { join } from "path"
 import electron from "vitejs-plugin-electron"
+import reactRefresh from "@vitejs/plugin-react-refresh"
 
 const root = join(__dirname, "src/render")
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default defineConfig(env => {
   return {
-    plugins: [vue(), electron()],
+    plugins: [reactRefresh(), vue(), electron()],
     root,
     base: "./", // index.html 中静态资源加载位置
     server: {
