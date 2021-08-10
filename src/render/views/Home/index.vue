@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import HelloWorld from "@render/components/vue/hello-word.vue"
+import HelloWorld from "@render/components/vue/sfc.vue"
 import ReactFc from "@render/components/react/sfc.tsx"
 import { ReactWrapper } from "@render/vendors/mixin-lib/index"
 // import { defineAsyncComponent } from "vue"

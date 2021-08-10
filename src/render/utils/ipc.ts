@@ -2,15 +2,23 @@ import { ipcRenderer } from "electron"
 import { onMounted, onBeforeUnmount } from "@vue/runtime-core"
 export enum EVENT_MAIN_MAP {
   asynchronousMessage = `asynchronous-message`,
-  synchronousMessage = `synchronous-message`
+  synchronousMessage = `synchronous-message`,
+  openWindow = `open-window`
 }
 export enum EVENT_REPLY_MAP {
   asynchronousReply = `asynchronous-reply`,
-  synchronousReply = `synchronous-reply`
+  synchronousReply = `synchronous-reply`,
+  openWindowSuccess = `open-window-success`,
+  openWindowClose = `open-window-close`,
+  windowUpdate = `window-update`
 }
 
 export function useSyncIpcRenderer(name: EVENT_MAIN_MAP, params) {
   return ipcRenderer.sendSync(name, params)
+}
+
+export function useSendIpcRenderer(name: EVENT_MAIN_MAP, params) {
+  ipcRenderer.sendSync(name, params)
 }
 
 export function useAsyncIpcRenderer(

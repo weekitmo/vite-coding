@@ -7,6 +7,7 @@
       <n-button @click="ipcSync">ipc同步通信</n-button>
       <n-button @click="ipcAsync">ipc异步通信</n-button>
       <n-button @click="toAbout">关于页面</n-button>
+      <n-button @click="openNewWindow">新开window</n-button>
     </n-space>
   </div>
   <figure class="md:flex bg-gray-100 rounded-xl p-8 md:p-0 mb-2">
@@ -63,6 +64,7 @@ import {
   EVENT_MAIN_MAP,
   EVENT_REPLY_MAP,
   useSyncIpcRenderer,
+  useSendIpcRenderer,
   useAsyncIpcRenderer
 } from "@render/utils/ipc"
 import { useRouter } from "vue-router"
@@ -115,6 +117,14 @@ export default defineComponent({
     return {
       toAbout() {
         router.push({ name: "About" })
+      },
+      openNewWindow() {
+        useSendIpcRenderer(EVENT_MAIN_MAP.openWindow, {
+          router: "about",
+          width: 400,
+          height: 400,
+          resizable: false
+        })
       },
       handleConfirm() {
         dialog.warning({
