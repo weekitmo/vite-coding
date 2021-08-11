@@ -36,3 +36,6 @@
 .sizebox {
   padding: 10px;
 }
+.bg-clip-text {
+  -webkit-background-clip: text;
+}

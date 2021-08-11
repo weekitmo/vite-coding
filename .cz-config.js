@@ -30,7 +30,7 @@ module.exports = {
       name: "🔨 refactor: 重构代码"
     },
     {
-      value: ":thought_balloon: chore",
+      value: ":pencil2: chore",
       name: "🗯 chore: 一些不太重要的更改"
     },
     {

@@ -1,7 +1,7 @@
 <template>
   <div v-if="isMainScreen" class="wrap">
-    <div class="time">{{ time }}</div>
-    <div class="btn" @click="close">X</div>
+    <div class="time bg-clip-text">{{ time }}</div>
+    <div class="btn bg-clip-text" @click="close">X</div>
   </div>
 </template>
 
@@ -49,7 +49,6 @@ export default {
   font-size: 200px;
   font-weight: bold;
   background: linear-gradient(to right, #a8ff78, #78ffd6);
-  -webkit-background-clip: text;
   color: transparent;
 }
 .btn {
@@ -63,7 +62,6 @@ export default {
   left: 50%;
   margin-left: -25px;
   background: linear-gradient(to right, #a8ff78, #78ffd6);
-  -webkit-background-clip: text;
   color: transparent;
   cursor: pointer;
 }

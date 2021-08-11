@@ -1,19 +1,19 @@
 <template>
   <div class="wrap">
     <div class="content">
-      <div class="input-wrap">
+      <div class="input-wrap bg-clip-text">
         <div class="label">工作时间</div>
-        <input type="number" v-model="work" />
+        <input class="bg-clip-text" type="number" v-model="work" />
         分钟
       </div>
-      <div class="input-wrap">
+      <div class="input-wrap bg-clip-text">
         <div class="label">休息时间</div>
-        <input type="number" v-model="rest" />
+        <input class="bg-clip-text" type="number" v-model="rest" />
         分钟
       </div>
-      <div class="input-wrap">
+      <div class="input-wrap bg-clip-text">
         <div class="label">提示时间</div>
-        <input type="number" v-model="tips" />
+        <input class="bg-clip-text" type="number" v-model="tips" />
         秒
       </div>
       <div class="btns">
@@ -73,7 +73,6 @@ input {
   outline: none;
   border: none;
   background: linear-gradient(to right, #74ebd5, #acb6e5);
-  -webkit-background-clip: text;
   color: transparent;
   caret-color: #fff;
   font-size: 16px;
@@ -114,7 +113,6 @@ input {
   margin-bottom: 20px;
   padding-bottom: 4px;
   background: linear-gradient(to right, #74ebd5, #acb6e5);
-  -webkit-background-clip: text;
   color: transparent;
 }
 .input-wrap::after {
