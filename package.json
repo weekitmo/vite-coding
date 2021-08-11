@@ -1,5 +1,5 @@
 {
-  "name": "electron-vue3-vite",
+  "name": "electron-vite",
   "version": "0.0.20",
   "main": "dist/main/index.js",
   "author": "weekit<121727393@qq.com>",
