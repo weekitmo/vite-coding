@@ -40,4 +40,6 @@ const app = createApp(App)
 app.use(router)
 app.use(store)
 app.use(naive)
-app.mount("#app").$nextTick(window.removeLoading)
+// Note: on Server Side, you need to manually push the initial location
+router.isReady().then(() => app.mount("#app").$nextTick(window.removeLoading))
+// app.mount("#app").$nextTick(window.removeLoading)

@@ -7,6 +7,7 @@ declare namespace NodeJS {
 interface Window {
   /** 关闭预加载动画 */
   removeLoading: () => void
+  requestAnimFrame(cb: Function): number
   webkitRequestAnimationFrame(cb: Function): number
   mozRequestAnimationFrame(cb: Function): number
   webkitCancelAnimationFrame(handle: number): void

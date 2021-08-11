@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, onActivated } from "vue"
 import { useRouter } from "vue-router"
 
 const title = ref("About")
@@ -19,6 +19,8 @@ const router = useRouter()
 const back = () => {
   router.back()
 }
+
+onActivated(() => console.log(`about onActivated`))
 </script>
 
 <style scoped lang="scss">

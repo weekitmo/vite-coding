@@ -31,7 +31,11 @@ if (argv.watch) {
     })
     watcher.on("event", ev => {
       if (ev.code === "END") {
-        if (child) child.kill()
+        if (child) {
+          console.log(`end`)
+          // process.kill(0)
+          child.kill(0)
+        }
         child = spawn(electron as any, [join(__dirname, `../${main}`)], {
           stdio: "inherit"
         })

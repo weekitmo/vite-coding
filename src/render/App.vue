@@ -1,19 +1,29 @@
 <template>
   <router-view class="router-view" v-slot="{ Component }">
-    <transition :name="transitionName">
-      <component :is="Component" />
-    </transition>
+    <!-- <component :is="Component" v-if="!route.meta.keepAlive" /> -->
+    <component :is="Component" />
+    <!-- <transition :name="transitionName">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </transition> -->
   </router-view>
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from "vue"
+import { onMounted, reactive, toRefs } from "vue"
 import { useRouter } from "vue-router"
 export default {
   name: "App",
 
   setup() {
     const router = useRouter()
+    onMounted(() =>
+      console.log(
+        router.currentRoute.value.name,
+        router.currentRoute.value.meta.keepAlive
+      )
+    )
     const state = reactive({
       transitionName: "slide-left"
     })
@@ -48,6 +58,7 @@ body {
   // text-align: center;
   color: #2c3e50;
 }
+
 .router-view {
   width: 100%;
   height: auto;
@@ -63,7 +74,7 @@ body {
 .slide-left-leave-active {
   height: 100%;
   will-change: transform;
-  transition: all 500ms;
+  transition: all 280ms;
   position: absolute;
   backface-visibility: hidden;
 }
