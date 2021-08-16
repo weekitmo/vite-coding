@@ -18,7 +18,7 @@ export function waitOn(arg0: { port: string | number; interval?: number }) {
         )
         resolve(res.statusCode)
       }).on("error", err => {
-        console.log("[waitOn]", `counter: ${counter++}`, err)
+        console.log("[waitOn]", `counter: ${counter++}`)
       })
     }, interval)
   })

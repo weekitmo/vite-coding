@@ -25,30 +25,6 @@ const router = createRouter({
         index: 2,
         keepAlive: false
       }
-    },
-    {
-      path: "/LockPage",
-      name: "LockPage",
-      component: () => import("@render/views/LockPage/index.vue"),
-      meta: {
-        keepAlive: false
-      }
-    },
-    {
-      path: "/Tips",
-      name: "Tips",
-      component: () => import("@render/views/Tips/index.vue"),
-      meta: {
-        keepAlive: false
-      }
-    },
-    {
-      path: "/Setting",
-      name: "Setting",
-      component: () => import("@render/views/Setting/index.vue"),
-      meta: {
-        keepAlive: false
-      }
     }
   ]
 })

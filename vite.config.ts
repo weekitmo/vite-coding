@@ -5,14 +5,19 @@ import { defineConfig } from "vite"
 import vue from "@vitejs/plugin-vue"
 import { join } from "path"
 import electron from "vitejs-plugin-electron"
-import reactRefresh from "@vitejs/plugin-react-refresh"
+// import reactRefresh from "@vitejs/plugin-react-refresh"
 
 const root = join(__dirname, "src/render")
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default defineConfig(env => {
   return {
-    plugins: [reactRefresh(), vue(), electron()],
+    plugins: [
+      vue(),
+      electron({
+        excludes: ["electron-store"]
+      })
+    ],
     root,
     base: "./", // index.html 中静态资源加载位置
     server: {
@@ -33,9 +38,6 @@ export default defineConfig(env => {
       commonjsOptions: {},
       assetsDir: "", // 相对路径 加载问题
       sourcemap: true
-    },
-    optimizeDeps: {
-      exclude: ["electron-is-dev", "electron-store"]
     }
   }
 })
