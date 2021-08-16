@@ -19,7 +19,9 @@
     "build:vue": "vite build",
     "build:pre": "node -r ts-node/register script/build-preload --env=production",
     "build:ele": "node -r ts-node/register script/build-main --env=production",
-    "build": "rimraf dist && npm run build:vue && npm run build:pre && npm run build:ele && electron-builder"
+    "build": "rimraf dist && npm run build:vue && npm run build:pre && npm run build:ele && electron-builder",
+    "build:mac": "rimraf dist && npm run build:vue && npm run build:pre && npm run build:ele && electron-builder -m",
+    "build:win": "rimraf dist && npm run build:vue && npm run build:pre && npm run build:ele && electron-builder -w"
   },
   "config": {
     "commitizen": {
@@ -41,7 +43,7 @@
   "build": {
     "appId": "org.weekit.coding",
     "productName": "Makabaka",
-    "asar": true,
+    "asar": false,
     "directories": {
       "output": "build/dist"
     },

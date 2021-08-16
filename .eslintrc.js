@@ -18,7 +18,8 @@ module.exports = {
     "@typescript-eslint/semi": 0,
     "prefer-const": "off",
     "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/no-unused-vars": 0
+    "@typescript-eslint/no-unused-vars": 0,
+    "@typescript-eslint/ban-ts-comment": 0
   },
   env: {
     es6: true
